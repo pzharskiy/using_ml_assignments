@@ -1,0 +1,74 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog ../dbchangelog-3.6.xsd">
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v1_0_0_0001">
+        <createTable tableName="uc_using_ml_assignments_transaction_v1_0_0">
+            <column defaultValueComputed="NEWID()" name="uuid" type="NVARCHAR(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="variation_id" type="BIGINT"/>
+            <column name="parent_uuid" type="NVARCHAR(36)"/>
+            <column name="start_time" type="datetime2"/>
+            <column name="end_time" type="datetime2"/>
+            <column name="status" type="NVARCHAR(36)"/>
+            <column name="error_status" type="NVARCHAR(36)"/>
+            <column name="start_bp_uuid" type="NVARCHAR(36)"/>
+            <column name="is_stp" type="int"/>
+            <column name="split_status" type="NVARCHAR(36)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v1_0_0_0002">
+        <createTable tableName="uc_using_ml_assignments_stage_v1_0_0">
+            <column defaultValueComputed="NEWID()" name="uuid" type="NVARCHAR(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="NVARCHAR(max)"/>
+            <column name="description" type="NVARCHAR(max)"/>
+            <column name="stage_order" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v1_0_0_0003">
+        <createTable tableName="uc_using_ml_assignments_transaction_stage_log_v1_0_0">
+            <column defaultValueComputed="NEWID()" name="uuid" type="NVARCHAR(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="stage_id" type="NVARCHAR(36)">
+                <constraints foreignKeyName="fk_uc_using_ml_assignments_transaction_stage_log_v1_0_0_uc_using_ml_assignments_stage_v1_0_0" nullable="false" referencedColumnNames="uuid" referencedTableName="uc_using_ml_assignments_stage_v1_0_0"/>
+            </column>
+            <column name="transaction_uuid" type="NVARCHAR(36)">
+                <constraints foreignKeyName="uc_using_ml_assignments_transaction_stage_log_v1_0_0_uc_using_ml_assignments_transaction_v1_0_0" nullable="false" referencedColumnNames="uuid" referencedTableName="uc_using_ml_assignments_transaction_v1_0_0"/>
+            </column>
+            <column name="bp_uuid" type="NVARCHAR(36)"/>
+            <column name="timestamp" type="DATE"/>
+            <column name="type" type="NVARCHAR(36)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v1_0_0_0004">
+        <createTable tableName="uc_using_ml_assignments_config_v1_0_0">
+            <column defaultValueComputed="NEWID()" name="uuid" type="NVARCHAR(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="variation_id" type="BIGINT"/>
+            <column name="name" type="NVARCHAR(450)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="NVARCHAR(max)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v1_0_0_0005">
+        <createTable tableName="uc_using_ml_assignments_ocr_cache_v1_0_0">
+            <column name="cache_key" type="NVARCHAR(256)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="document_xml_link" type="NVARCHAR(2048)"/>
+            <column name="pages" type="INT"/>
+            <column name="meta_info_pages" type="NVARCHAR(max)"/>
+            <column name="meta_info_xml_url" type="NVARCHAR(2048)"/>
+            <column name="creation_time" type="NVARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,8 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog ../dbchangelog-3.6.xsd">
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_records_v1_0_0_001">
+        <loadData commentLineStartsWith="//" encoding="UTF-8" file="usecase_config.csv" relativeToChangelogFile="true" separator="," tableName="uc_using_ml_assignments_config_v1_0_0">
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

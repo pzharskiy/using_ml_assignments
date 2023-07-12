@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog ../dbchangelog-3.6.xsd">
+
+    <changeSet author="ODF2 archetype" id="uc_using_ml_assignments_v0_0_1_006">
+        <createTable tableName="uc_using_ml_assignments_extraction_model_results">
+            <column name="gold_value" type="NVARCHAR(256)"/>
+            <column name="extracted_value" type="NVARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
